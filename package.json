@@ -1,0 +1,46 @@
+{
+  "name": "cse341-projects-kl",
+  "version": "1.0.0",
+  "description": "Repository for my CSE 341 Class Projects",
+  "main": "server.js",
+  "scripts": {
+    "devStart": "nodemon src/server.js",
+    "startProd": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KobeLemon/cse341-project2-kl.git"
+  },
+  "author": "Kobe Lemon",
+  "license": "ISC",
+  "engines": {
+    "node": "20.6.1"
+  },
+  "bugs": {
+    "url": "https://github.com/KobeLemon/cse341-project2-kl/issues"
+  },
+  "homepage": "https://github.com/KobeLemon/cse341-project2-kl#readme",
+  "dependencies": {
+    "body": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "mongodb": "^6.1.0",
+    "parser": "^0.1.4",
+    "router": "^1.3.8",
+    "swagger-autogen": "^2.23.6",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3"
+  }
+}
