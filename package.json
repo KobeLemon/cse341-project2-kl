@@ -1,12 +1,12 @@
 {
   "name": "cse341-projects-kl",
   "version": "1.0.0",
-  "description": "Repository for my CSE 341 Class Projects",
+  "description": "Repository for my CSE 341 Week 3 Class Project",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon src/server.js",
-    "startProd": "node src/server.js",
-    "swagger": "node src/swagger.js"
+    "devStart": "nodemon server.js",
+    "startProd": "node server.js",
+    "swagger": "node swagger.js"
   },
   "repository": {
     "type": "git",
