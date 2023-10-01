@@ -3,9 +3,9 @@ let swaggerHostLink = require('../swagger.json');
 let pageLink = '';
 
 if (swaggerHostLink.host == 'localhost:3000') {
-    pageLink = 'http://localhost:3000';
-} else if (swaggerHostLink.host == 'cse341-project2-kl.onrender.com' || swaggerHostLink.host == 'cse341-project2-kl.onrender.com/') {
-    pageLink = 'https://cse341-project2-kl.onrender.com';
+    pageLink = `http://${swaggerHostLink.host}`;
+} else if (swaggerHostLink.host == 'cse341-project2-kl.onrender.com') {
+    pageLink = `https://${swaggerHostLink.host}`;
 } else {
     pageLink = `<strong>Invalid Host Address:</strong> ${swaggerHostLink.host}`;
     console.log(pageLink);
