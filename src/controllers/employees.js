@@ -9,7 +9,6 @@ const getAllEmployees = async (req, res) => {
             res.status(200).json(employees);
         });    
     } catch (error) {
-        next(error);
         console.log(error);
     }
 };
@@ -23,7 +22,6 @@ const getSingleEmployee = async (req, res) => {
             res.status(200).json(employees[0]);
         });    
     } catch (error) {
-        next(error);
         console.log(error);
     }
     
@@ -48,7 +46,6 @@ const createEmployee = async (req, res) => {
             res.status(500).json(response.error || 'Some error occurred while creating the user.')
         }    
     } catch (error) {
-        next(error);
         console.log(error);
     }
     
@@ -73,7 +70,6 @@ const updateEmployee = async (req, res) => {
         res.status(500).json(response.error || 'Some error occurred while updating the user.');
     }    
     } catch (error) {
-        next(error);
         console.log(error);
     }
     
@@ -89,7 +85,6 @@ const deleteEmployee = async (req, res) => {
             res.status(500).json(response.error || 'Some error occurred while deleting the user.');
         }    
     } catch (error) {
-        next(error);
         console.log(error);
     }
     

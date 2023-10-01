@@ -9,7 +9,6 @@ const getAllCustomers = async (req, res) => {
             res.status(200).json(customers);
         });    
     } catch (error) {
-        next(error);
         console.log(error);
     }
     
@@ -24,7 +23,6 @@ const getSingleCustomer = async (req, res) => {
             res.status(200).json(customers[0]);
         });    
     } catch (error) {
-        next(error);
         console.log(error);
     }
     
@@ -47,7 +45,6 @@ const createCustomer = async (req, res) => {
             res.status(500).json(response.error || 'Some error occurred while creating the user.')
         }
     } catch (error) {
-        next(error);
         console.log(error);
     }
     
@@ -71,7 +68,6 @@ const updateCustomer = async (req, res) => {
             res.status(500).json(response.error || 'Some error occurred while updating the user.');
         }
     } catch (error) {
-        next(error);
         console.log(error);
     }
     
@@ -87,7 +83,6 @@ const deleteCustomer = async (req, res) => {
             res.status(500).json(response.error || 'Some error occurred while deleting the user.');
         }
     } catch (error) {
-        next(error);
         console.log(error);
     }
 };
