@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "devStart": "nodemon src/server.js",
-    "startProd": "node src/server.js"
+    "startProd": "node src/server.js",
+    "swagger": "node src/swagger.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/KobeLemon/cse341-project2-kl#readme",
   "dependencies": {
     "body": "^5.1.0",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
