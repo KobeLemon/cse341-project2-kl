@@ -2,6 +2,9 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAllEmployees = async (req, res) => {
+    // #swagger.tags = ['Employees']
+    // #swagger.description = 'Get all Employees'
+
     try {
         const result = await mongodb.getDatabase().db('project2').collection('employees').find();
         result.toArray().then((employees) => {
@@ -14,6 +17,9 @@ const getAllEmployees = async (req, res) => {
 };
 
 const getSingleEmployee = async (req, res) => {
+    // #swagger.tags = ['Employees']
+    // #swagger.description = 'Get a single Employee'
+
     try {
         const userId = new ObjectId(req.params.id);
         const result = await mongodb.getDatabase().db('project2').collection('employees').find({_id: userId});
@@ -28,6 +34,9 @@ const getSingleEmployee = async (req, res) => {
 };
 
 const createEmployee = async (req, res) => {
+    // #swagger.tags = ['Employees']
+    // #swagger.description = 'Create a new Employee'
+
     try {
         const user = {
             firstName: req.body.firstName,
@@ -52,6 +61,9 @@ const createEmployee = async (req, res) => {
 };
 
 const updateEmployee = async (req, res) => {
+    // #swagger.tags = ['Employees']
+    // #swagger.description = 'Update an existing Employee'
+
     try {
     const userId = new ObjectId(req.params.id);
     const user = {
@@ -76,6 +88,9 @@ const updateEmployee = async (req, res) => {
 };
 
 const deleteEmployee = async (req, res) => {
+    // #swagger.tags = ['Employees']
+    // #swagger.description = 'Delete an existing Employee'
+
     try {
         const userId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db('project2').collection('employees').deleteOne({ _id: userId});

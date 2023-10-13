@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./data/database');
 const app = express();
-const dotenv = require('dotenv').config();
 const passport = require('passport');
 const session = require('express-session');
 const GitHubStrategy = require('passport-github').Strategy
@@ -20,14 +19,10 @@ if (swaggerHostLink.host == 'localhost:3000') {
 }
 
 const homePageMsg = 
-    `<p>This API is a mockup of a database showing fake filler employee information and fake filler customer information. Swagger UI is used to perform the CRUD operations.</p>
-    <p>To access all employees, visit this site: <a href="${pageLink}/employees">${pageLink}/employees</a></p>
-    <p>To access all customers, visit this site: <a href="${pageLink}/customers">${pageLink}/customers</a></p>
-    <p>To access Swagger UI for the CRUD functions, visit this site: <a href="${pageLink}/api-docs">${pageLink}/api-docs</a></p>`
-
-// router.get('/', (req, res) => (
-//     res.send(homePageMsg)
-// ));
+    `<p>This API is a mockup of a database showing fake filler employee information and fake filler customer information.</p>
+    <p>To access Swagger UI for the CRUD functions, click the link below. You must login with GitHub first. 
+    <br>
+    <a href="${pageLink}/api-docs">${pageLink}/api-docs</a></p>`
 
 const port3000 = process.env.PORT || 3000;
 
@@ -79,7 +74,16 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `<p>Logged in as ${req.session.user.displayName}</p> ${homePageMsg}` : `<p>Logged Out</p> ${homePageMsg}`)});
+app.get('/', (req, res) => { res.send(req.session.user !== undefined ? 
+    
+    `${homePageMsg}
+    <p>Logged in as ${req.session.user.displayName}</p>
+    <p><a href="${pageLink}/logout">Click here to logout</a></p>`
+    : 
+    `${homePageMsg}
+    <p>Logged Out</p>
+    <p><a href="${pageLink}/login">Click here to login</a></p>`
+)});
 
 app.get('/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs', session: false}),

@@ -2,6 +2,8 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAllCustomers = async (req, res) => {
+    // #swagger.tags = ['Customers']
+    // #swagger.description = 'Get all Customers'
     try {
         const result = await mongodb.getDatabase().db('project2').collection('customers').find();
         result.toArray().then((customers) => {
@@ -15,6 +17,8 @@ const getAllCustomers = async (req, res) => {
 };
 
 const getSingleCustomer = async (req, res) => {
+    // #swagger.tags = ['Customers']
+    // #swagger.description = 'Get a single Customer'
     try {
         const userId = new ObjectId(req.params.id);
         const result = await mongodb.getDatabase().db('project2').collection('customers').find({_id: userId});
@@ -29,6 +33,8 @@ const getSingleCustomer = async (req, res) => {
 };
 
 const createCustomer = async (req, res) => {
+    // #swagger.tags = ['Customers']
+    // #swagger.description = 'Create a new Customer'
     try {
         const user = {
             firstName: req.body.firstName,
@@ -51,6 +57,8 @@ const createCustomer = async (req, res) => {
 };
 
 const updateCustomer = async (req, res) => {
+    // #swagger.tags = ['Customers']
+    // #swagger.description = 'Update an existing Customer'
     try {
         const userId = new ObjectId(req.params.id);
         const user = {
@@ -74,6 +82,8 @@ const updateCustomer = async (req, res) => {
 };
 
 const deleteCustomer = async (req, res) => {
+    // #swagger.tags = ['Customers']
+    // #swagger.description = 'Delete an existing Customer'
     try {
         const userId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db('project2').collection('customers').deleteOne({ _id: userId});
