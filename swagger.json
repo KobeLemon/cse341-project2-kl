@@ -7,9 +7,7 @@
   },
   "host": "cse341-project2-kl.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
     "/login": {
       "get": {
@@ -43,13 +41,9 @@
     },
     "/employees/": {
       "get": {
-        "tags": [
-          "Employees"
-        ],
+        "tags": ["Employees"],
         "description": "Get all Employees",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -57,9 +51,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Employees"
-        ],
+        "tags": ["Employees"],
         "description": "Create a new Employee",
         "parameters": [
           {
@@ -114,13 +106,9 @@
     },
     "/employees/{id}": {
       "get": {
-        "tags": [
-          "Employees"
-        ],
+        "tags": ["Employees"],
         "description": "Get a single Employee",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -136,9 +124,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Employees"
-        ],
+        "tags": ["Employees"],
         "description": "Update an existing Employee",
         "parameters": [
           {
@@ -197,9 +183,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Employees"
-        ],
+        "tags": ["Employees"],
         "description": "Delete an existing Employee",
         "parameters": [
           {
@@ -224,13 +208,9 @@
     },
     "/customers/": {
       "get": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "description": "Get all Customers",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -238,9 +218,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "description": "Create a new Customer",
         "parameters": [
           {
@@ -289,13 +267,9 @@
     },
     "/customers/{id}": {
       "get": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "description": "Get a single Customer",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -311,9 +285,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "description": "Update an existing Customer",
         "parameters": [
           {
@@ -366,9 +338,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "description": "Delete an existing Customer",
         "parameters": [
           {

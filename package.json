@@ -6,7 +6,10 @@
   "scripts": {
     "devStart": "nodemon server.js",
     "startProd": "node server.js",
-    "swagger": "node swagger.js"
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .js .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "swagger-autogen": "node swagger.js"
   },
   "repository": {
     "type": "git",

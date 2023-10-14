@@ -2,113 +2,125 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAllEmployees = async (req, res) => {
-    // #swagger.tags = ['Employees']
-    // #swagger.description = 'Get all Employees'
+  // #swagger.tags = ['Employees']
+  // #swagger.description = 'Get all Employees'
 
-    try {
-        const result = await mongodb.getDatabase().db('project2').collection('employees').find();
-        result.toArray().then((employees) => {
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(employees);
-        });    
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+    const result = await mongodb.getDatabase().db('project2').collection('employees').find();
+    result.toArray().then((employees) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(employees);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getSingleEmployee = async (req, res) => {
-    // #swagger.tags = ['Employees']
-    // #swagger.description = 'Get a single Employee'
+  // #swagger.tags = ['Employees']
+  // #swagger.description = 'Get a single Employee'
 
-    try {
-        const userId = new ObjectId(req.params.id);
-        const result = await mongodb.getDatabase().db('project2').collection('employees').find({_id: userId});
-        result.toArray().then((employees) => {
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(employees[0]);
-        });    
-    } catch (error) {
-        console.log(error);
-    }
-    
+  try {
+    const userId = new ObjectId(req.params.id);
+    const result = await mongodb
+      .getDatabase()
+      .db('project2')
+      .collection('employees')
+      .find({ _id: userId });
+    result.toArray().then((employees) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(employees[0]);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const createEmployee = async (req, res) => {
-    // #swagger.tags = ['Employees']
-    // #swagger.description = 'Create a new Employee'
+  // #swagger.tags = ['Employees']
+  // #swagger.description = 'Create a new Employee'
 
-    try {
-        const user = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            facility: req.body.facility,
-            department: req.body.department,
-            supervisor: req.body.supervisor,
-            hireDate: req.body.hireDate
-        };
+  try {
+    const user = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      facility: req.body.facility,
+      department: req.body.department,
+      supervisor: req.body.supervisor,
+      hireDate: req.body.hireDate,
+    };
 
-        const response = await mongodb.getDatabase().db('project2').collection('employees').insertOne(user);
-        if (response.acknowledged > 0) {
-            res.status(204).send();
-        } else {
-            res.status(500).json(response.error || 'Some error occurred while creating the user.')
-        }    
-    } catch (error) {
-        console.log(error);
+    const response = await mongodb
+      .getDatabase()
+      .db('project2')
+      .collection('employees')
+      .insertOne(user);
+    if (response.acknowledged > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'Some error occurred while creating the user.');
     }
-    
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const updateEmployee = async (req, res) => {
-    // #swagger.tags = ['Employees']
-    // #swagger.description = 'Update an existing Employee'
+  // #swagger.tags = ['Employees']
+  // #swagger.description = 'Update an existing Employee'
 
-    try {
+  try {
     const userId = new ObjectId(req.params.id);
     const user = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        facility: req.body.facility,
-        department: req.body.department,
-        supervisor: req.body.supervisor,
-        hireDate: req.body.hireDate
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      facility: req.body.facility,
+      department: req.body.department,
+      supervisor: req.body.supervisor,
+      hireDate: req.body.hireDate,
     };
-    const response = await mongodb.getDatabase().db('project2').collection('employees').replaceOne({ _id: userId}, user);
+    const response = await mongodb
+      .getDatabase()
+      .db('project2')
+      .collection('employees')
+      .replaceOne({ _id: userId }, user);
     if (response.modifiedCount > 0) {
-        res.status(204).send();
+      res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error occurred while updating the user.');
-    }    
-    } catch (error) {
-        console.log(error);
+      res.status(500).json(response.error || 'Some error occurred while updating the user.');
     }
-    
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const deleteEmployee = async (req, res) => {
-    // #swagger.tags = ['Employees']
-    // #swagger.description = 'Delete an existing Employee'
+  // #swagger.tags = ['Employees']
+  // #swagger.description = 'Delete an existing Employee'
 
-    try {
-        const userId = new ObjectId(req.params.id);
-        const response = await mongodb.getDatabase().db('project2').collection('employees').deleteOne({ _id: userId});
-        if (response.deletedCount > 0) {
-            res.status(204).send();
-        } else {
-            res.status(500).json(response.error || 'Some error occurred while deleting the user.');
-        }    
-    } catch (error) {
-        console.log(error);
+  try {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb
+      .getDatabase()
+      .db('project2')
+      .collection('employees')
+      .deleteOne({ _id: userId });
+    if (response.deletedCount > 0) {
+      res.status(204).send();
+    } else {
+      res.status(500).json(response.error || 'Some error occurred while deleting the user.');
     }
-    
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 module.exports = {
-    getAllEmployees,
-    getSingleEmployee,
-    createEmployee,
-    updateEmployee,
-    deleteEmployee,
+  getAllEmployees,
+  getSingleEmployee,
+  createEmployee,
+  updateEmployee,
+  deleteEmployee,
 };
